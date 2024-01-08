@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bolånekalkyltaor</title>
+  </head>
+  <body>
+    <main>
+      <h1>Bolånekalkylator</h1>
+      <article class="formArticle">
+        <div class="formDiv" id="formDiv">
+          <label for="lengthOfCash">Lånetid</label>
+          <input id="lengthOfCash" type="number" maxlength="2" />
+          <label for="sumOfCash">Lånesumma</label>
+          <input id="sumOfCash" type="number" />
+          <label for="interestRate">Räntesats</label>
+          <input id="interestRate" type="number" />
+          <button class="claculateBtn" id="claculateBtn">Beräkna</button>
+        </div>
+        <h2>Avbetalningstabell</h2>
+        <div class="resultDiv" id="resultDiv">
+          <div class="resultRow" id="resultRow">
+            <div class="resultItem" id="monthResult"></div>
+            <div class="resultItem" id="interestResult"></div>
+            <div class="resultItem" id="principalResult"></div>
+            <div class="resultItem" id="remainingDebtResult"></div>
+            <div class="resultItem" id="monthlyPaymentResult"></div>
+          </div>
+        </div>
+      </article>
+    </main>
+    <script src="js/index.js"></script>
+  </body>
+</html>
