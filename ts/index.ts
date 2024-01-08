@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const calculateBtn = document.getElementById(
-    "claculateBtn"
+    "calculateBtn"
   ) as HTMLButtonElement;
 
   if (calculateBtn) {
@@ -35,44 +35,53 @@ function calculateInterestPmt(
   let principal: number = sumOfCash;
   let monthlyInterestRate: number = annualInterestRate / 12 / 100;
 
+  // Clear previous results
+  const monthContainer = document.getElementById(
+    "monthContainer"
+  ) as HTMLDivElement;
+  const interestContainer = document.getElementById(
+    "interestContainer"
+  ) as HTMLDivElement;
+  const principalContainer = document.getElementById(
+    "principalContainer"
+  ) as HTMLDivElement;
+  const remainingDebtContainer = document.getElementById(
+    "remainingDebtContainer"
+  ) as HTMLDivElement;
+  const monthlyPaymentContainer = document.getElementById(
+    "monthlyPaymentContainer"
+  ) as HTMLDivElement;
+
+  monthContainer.innerHTML = ""; // Clear previous content
+  interestContainer.innerHTML = "";
+  principalContainer.innerHTML = "";
+  remainingDebtContainer.innerHTML = "";
+  monthlyPaymentContainer.innerHTML = "";
+  // Append headers to the respective containers
+  monthContainer.innerHTML += "<h3>Month</h3>";
+  interestContainer.innerHTML += "<h3>Interest Payments</h3>";
+  principalContainer.innerHTML += "<h3>Principal Payments</h3>";
+  remainingDebtContainer.innerHTML += "<h3>Remaining Debt</h3>";
+  monthlyPaymentContainer.innerHTML += "<h3>Monthly Payments</h3>";
   let monthlyPayment: number =
     (principal * monthlyInterestRate) /
     (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
-
-  // Get the resultDiv elements
-  const monthResult = document.getElementById("monthResult") as HTMLDivElement;
-  const interestResult = document.getElementById(
-    "interestResult"
-  ) as HTMLDivElement;
-  const principalResult = document.getElementById(
-    "principalResult"
-  ) as HTMLDivElement;
-  const remainingDebtResult = document.getElementById(
-    "remainingDebtResult"
-  ) as HTMLDivElement;
-  const monthlyPaymentResult = document.getElementById(
-    "monthlyPaymentResult"
-  ) as HTMLDivElement;
 
   for (let month = 1; month <= totalPayments; month++) {
     let interestPayment = principal * monthlyInterestRate;
     let principalPayment = monthlyPayment - interestPayment;
     let remainingDebt = principal - principalPayment;
 
-    // Update the resultDiv elements with the calculated values
-    monthResult.textContent = `Month ${month}:`;
-    interestResult.textContent = `Interest Payment: ${interestPayment.toFixed(
+    // Append values to the respective containers
+    monthContainer.innerHTML += `<div>${month}</div>`;
+    interestContainer.innerHTML += `<div>${interestPayment.toFixed(2)}</div>`;
+    principalContainer.innerHTML += `<div>${principalPayment.toFixed(2)}</div>`;
+    remainingDebtContainer.innerHTML += `<div>${remainingDebt.toFixed(
       2
-    )}`;
-    principalResult.textContent = `Principal Payment: ${principalPayment.toFixed(
+    )}</div>`;
+    monthlyPaymentContainer.innerHTML += `<div>${monthlyPayment.toFixed(
       2
-    )}`;
-    remainingDebtResult.textContent = `Remaining Debt: ${remainingDebt.toFixed(
-      2
-    )}`;
-    monthlyPaymentResult.textContent = `Monthly Payment: ${monthlyPayment.toFixed(
-      2
-    )}`;
+    )}</div>`;
 
     principal -= principalPayment; // Update the remaining principal for the next iteration
   }

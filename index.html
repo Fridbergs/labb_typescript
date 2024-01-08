@@ -17,15 +17,23 @@
           <input id="sumOfCash" type="number" />
           <label for="interestRate">Räntesats</label>
           <input id="interestRate" type="number" />
-          <button class="claculateBtn" id="claculateBtn">Beräkna</button>
+          <button class="calculateBtn" id="calculateBtn">Beräkna</button>
         </div>
         <h2>Avbetalningstabell</h2>
         <div class="resultDiv" id="resultDiv">
-          <div class="resultRow" id="resultRow">
+          <div class="resultContainer" id="monthContainer">
             <div class="resultItem" id="monthResult"></div>
+          </div>
+          <div class="resultContainer" id="interestContainer">
             <div class="resultItem" id="interestResult"></div>
+          </div>
+          <div class="resultContainer" id="principalContainer">
             <div class="resultItem" id="principalResult"></div>
+          </div>
+          <div class="resultContainer" id="remainingDebtContainer">
             <div class="resultItem" id="remainingDebtResult"></div>
+          </div>
+          <div class="resultContainer" id="monthlyPaymentContainer">
             <div class="resultItem" id="monthlyPaymentResult"></div>
           </div>
         </div>

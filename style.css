@@ -16,7 +16,7 @@ main {
   display: flex;
   flex-direction: column;
   background-color: rgb(51, 32, 9);
-  width: 50%;
+  width: 95%;
   border: 2px solid;
 }
 .formArticle {
@@ -35,7 +35,8 @@ main {
 
 .resultDiv {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: rgb(189, 219, 235);
   width: 100%;
   border: 2px solid;
