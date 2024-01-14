@@ -1,6 +1,9 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", () => {
     const calculateBtn = document.getElementById("calculateBtn");
+    const errorContainer = document.createElement("div");
+    errorContainer.id = "error-message";
+    calculateBtn.insertAdjacentElement("beforebegin", errorContainer);
     if (calculateBtn) {
         calculateBtn.addEventListener("click", collectInput);
     }
@@ -9,10 +12,19 @@ function collectInput() {
     const lengthOfCashInput = document.getElementById("lengthOfCash");
     const sumOfCashInput = document.getElementById("sumOfCash");
     const interestRateInput = document.getElementById("interestRate");
+    const errorContainer = document.getElementById("error-message");
     let lengthOfCash = parseFloat(lengthOfCashInput.value);
     let sumOfCash = parseFloat(sumOfCashInput.value);
     let annualInterestRate = parseFloat(interestRateInput.value);
-    calculateInterestPmt(lengthOfCash, sumOfCash, annualInterestRate);
+    // Check if the loan length is more than 25 years
+    if (lengthOfCash > 25) {
+        errorContainer.textContent = "Lånetiden kan inte vara längre än 25 år";
+        return; // Stop the function if the loan length is too long
+    }
+    else {
+        errorContainer.textContent = ""; // Clear the error message if the input is valid
+        calculateInterestPmt(lengthOfCash, sumOfCash, annualInterestRate);
+    }
 }
 function calculateInterestPmt(lengthOfCash, sumOfCash, annualInterestRate) {
     let totalPayments = lengthOfCash * 12;

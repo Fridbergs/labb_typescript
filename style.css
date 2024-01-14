@@ -78,3 +78,10 @@ input {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
+
+#error-message {
+  text-align: center;
+  height: 2em;
+  color: rgb(185, 101, 115);
+  width: 8em;
+}
